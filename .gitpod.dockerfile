@@ -18,11 +18,11 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | 
     bash -c ". .nvm/nvm.sh && nvm install --lts"
 
 ## Install Go
-# ENV GO_VERSION="1.17.11"
-# ENV GOPATH=$HOME/go-packages
-# ENV GOROOT=$HOME/go
-# ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-# RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar xzs
+ENV GO_VERSION="1.17.11"
+ENV GOPATH=$HOME/go-packages
+ENV GOROOT=$HOME/go
+ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar xzs
 
 ### Install Mailhog
 RUN go install github.com/mailhog/MailHog@latest && \
