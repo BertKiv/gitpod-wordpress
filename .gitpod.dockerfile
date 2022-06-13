@@ -37,24 +37,22 @@ USER root
 ARG DEBIAN_FRONTEND=noninteractive
 RUN add-apt-repository -y ppa:ondrej/php \
     && install-packages \
-        # Install MariaDB
-        # mariadb-server \
-        # Install Apache
-        apache2 \
-        # Install PHP and modules
+        libapache2-mod-php \
         php${PHP_VERSION} \
-        php${PHP_VERSION}-dev \
-        php${PHP_VERSION}-bcmath \
-        php${PHP_VERSION}-ctype \
+        php${PHP_VERSION}-common \
+        php${PHP_VERSION}-cli \
+        php${PHP_VERSION}-mbstring \
         php${PHP_VERSION}-curl \
         php${PHP_VERSION}-gd \
         php${PHP_VERSION}-intl \
-        php${PHP_VERSION}-mbstring \
         php${PHP_VERSION}-mysql \
-        php${PHP_VERSION}-tokenizer \
-        php${PHP_VERSION}-json \
         php${PHP_VERSION}-xml \
-        php${PHP_VERSION}-zip
+        php${PHP_VERSION}-json \
+        php${PHP_VERSION}-zip \
+        php${PHP_VERSION}-soap \
+        php${PHP_VERSION}-bcmath \
+        php${PHP_VERSION}-opcache \
+        php-xdebug
 
 ### Setup WebServer
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load && \
