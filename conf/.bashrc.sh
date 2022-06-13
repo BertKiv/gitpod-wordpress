@@ -46,7 +46,7 @@ function wp-setup () {
   
   # create a debugger launch.json
   mkdir -p ${GITPOD_REPO_ROOT}/.theia
-  mv $HOME/gitpod-wordpress/conf/launch.json ${GITPOD_REPO_ROOT}/.theia/launch.json
+  mv $HOME/.gitpod-conf/conf/launch.json ${GITPOD_REPO_ROOT}/.theia/launch.json
   
   # create a database for this WordPress
   echo 'Creating MySQL user and database ...'
@@ -61,7 +61,7 @@ function wp-setup () {
   wp core download --path="${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/"
   
   echo 'Installing WordPress ...'
-  cp $HOME/gitpod-wordpress/conf/wp-config.php ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/wp-config.php
+  cp $HOME/.gitpod-conf/conf/wp-config.php ${GITPOD_REPO_ROOT}/${APACHE_DOCROOT}/wp-config.php
   wp core install \
     --url="$(gp url 8080 | sed -e s/https:\\/\\/// | sed -e s/\\///)" \
     --title="WordPress" \
