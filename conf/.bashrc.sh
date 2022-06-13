@@ -5,10 +5,10 @@ then
     touch /var/run/mysqld/gitpod-init.lock
 
     # initialize database structures on disk, if needed
-    # [ ! -d /workspace/.mysql ] && mysqld --initialize-insecure --user=gitpod
+    [ ! -d /workspace/.mysql ] && mysqld --initialize-insecure --user=gitpod
 
     # launch database, if not running
-    # [ ! -e /var/run/mysqld/mysqld.pid ] && mysqld --daemonize
+    [ ! -e /var/run/mysqld/mysqld.pid ] && mysqld --daemonize
 
     rm /var/run/mysqld/gitpod-init.lock
 fi
