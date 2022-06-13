@@ -18,20 +18,19 @@ RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | 
     bash -c ". .nvm/nvm.sh && nvm install --lts"
 
 ## Install Go
-ENV GO_VERSION="1.17.11"
-ENV GOPATH=$HOME/go-packages
-ENV GOROOT=$HOME/go
-ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar xzs
+# ENV GO_VERSION="1.17.11"
+# ENV GOPATH=$HOME/go-packages
+# ENV GOROOT=$HOME/go
+# ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+# RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz | tar xzs
 
 ### Install Mailhog
 RUN go install github.com/mailhog/MailHog@latest && \
     go install github.com/mailhog/mhsendmail@latest && \
-    sudo cp $GOPATH/bin/MailHog /usr/local/bin/mailhog && \
-    sudo cp $GOPATH/bin/mhsendmail /usr/local/bin/mhsendmail && \
-    sudo ln $GOPATH/bin/mhsendmail /usr/sbin/sendmail && \
-    sudo ln $GOPATH/bin/mhsendmail /usr/bin/mail &&\
-    sudo rm -rf $GOPATH/src $GOPATH/pkg /home/gitpod/.cache/go /home/gitpod/.cache/go-build
+    cp $GOPATH/bin/MailHog /usr/local/bin/mailhog && \
+    cp $GOPATH/bin/mhsendmail /usr/local/bin/mhsendmail && \
+    ln $GOPATH/bin/mhsendmail /usr/sbin/sendmail && \
+    ln $GOPATH/bin/mhsendmail /usr/bin/mail
 
 ## Install WebServer
 USER root
