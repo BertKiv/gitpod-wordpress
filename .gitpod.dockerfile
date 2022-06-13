@@ -39,7 +39,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN add-apt-repository -y ppa:ondrej/php \
     && install-packages \
         # Install MariaDB
-        mariadb-server \
+        # mariadb-server \
         # Install Apache
         apache2 \
         # Install PHP and modules
