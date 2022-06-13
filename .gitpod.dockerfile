@@ -62,8 +62,8 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
     chown -R gitpod:gitpod /etc/apache2 /var/run/apache2 /var/lock/apache2 /var/log/apache2 && \
     echo "include /home/gitpod/.gitpod-conf/conf/apache.conf" > /etc/apache2/apache2.conf && \
     echo ". /home/gitpod/.gitpod-conf/conf/apache.env.sh" > /etc/apache2/envvars && \
-    mkdir -p /var/run/mysqld /var/log/mysql && \
-    chown -R gitpod:gitpod /etc/mysql /var/run/mysqld /var/log/mysql /var/lib/mysql && \
+    # mkdir -p /var/run/mysqld /var/log/mysql && \
+    # chown -R gitpod:gitpod /etc/mysql /var/run/mysqld /var/log/mysql /var/lib/mysql && \
     cat /home/gitpod/.gitpod-conf/conf/mysql.cnf > /etc/mysql/mariadb.conf.d/100-mysql-gitpod.cnf && \
     cat /home/gitpod/.gitpod-conf/conf/php.ini >> /etc/php/${PHP_VERSION}/apache2/php.ini
 
