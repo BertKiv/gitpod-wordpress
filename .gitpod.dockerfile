@@ -2,7 +2,7 @@
 # License: MIT (c) 2020 Luiz Paulo "Bills"
 # Version: 0.9
 
-FROM gitpod/workspace-base:latest
+FROM gitpod/workspace-mysql
 
 ## General Settings ##
 ENV PHP_VERSION="7.4"
